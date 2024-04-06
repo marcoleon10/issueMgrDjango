@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Acerca de Mi{% endblock title %}
+
+{% block content %}
+
+<header>
+    <h1>Acerca de Mi</h1>
+</header>
+<main>
+    <section>
+        <h2>Mi Historia</h2>
+        <p>Soy un estudiante de Ingeniería en Software que hace lo que le gusta...</p>
+    </section>
+    <section>
+        <h2>Mi Misión</h2>
+        <p>Mi principal objetivo es obtener el suficiente conocimiento para realizar una página web completa y comercial</p>
+    </section>
+    <img src="{% static 'img/LogoHabul2.jpg' %}" style="width:25%;" >
+</main>
+<footer>
+    <p>&copy 2024 MarcoLeon. Todos los derechos reservados.</p>
+</footer>
+{% endblock content %}
