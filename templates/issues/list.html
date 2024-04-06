@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Issues{% endblock title %}
+
+{% block content %}
+<style>
+  .bg-danger, .bg-warning, .bg-success {
+    opacity: 0.8; /* Opacidad del color de fondo */
+    border-radius: 0.25rem; /* Borde redondeado */
+    padding: 1rem; /* Espaciado interno */
+  }
+
+  .bg-danger {
+      background-color: #FFCCCC; /* Rojo pastel */
+  }
+
+  .bg-warning {
+      background-color: #FFFFCC; /* Amarillo pastel */
+  }
+
+  .bg-success {
+      background-color: #CCFFCC; /* Verde pastel */
+  }
+</style>
+
+<div class="row">
+    <div class="col">
+        <h2>To Do</h2>
+        <ul>
+            {% for issue in object_list %}
+              {% if issue.status == 'to_do' %}
+                <div class="card">
+                  <div class="card-body bg-danger">
+                      <h5 class="card-title">{{ issue.summary }}</h5>
+                      <p class="card-text">Status: {{ issue.status }}</p>
+                      <p class="card-text">Assignee: {{ issue.assignee }}</p>
+                      <a href="{% url 'detail' issue.id %}" class="btn btn-sm btn-primary">Details</a>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col">
+        <h2>In Progress</h2>
+        <ul>
+            {% for issue in object_list %}
+                {% if issue.status == 'in_progress' %}
+                  <div class="card">
+                    <div class="card-body bg-warning">
+                        <h5 class="card-title">{{ issue.summary }}</h5>
+                        <p class="card-text">Status: {{ issue.status }}</p>
+                        <p class="card-text">Assignee: {{ issue.assignee }}</p>
+                        <a href="{% url 'detail' issue.id %}" class="btn btn-sm btn-primary">Details</a>
+                    </div>
+                  </div>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col">
+        <h2>Done</h2>
+        <ul>
+            {% for issue in object_list %}
+                {% if issue.status == 'done' %}
+                  <div class="card">
+                    <div class="card-body bg-success">
+                        <h5 class="card-title">{{ issue.summary }}</h5>
+                        <p class="card-text">Status: {{ issue.status }}</p>
+                        <p class="card-text">Assignee: {{ issue.assignee }}</p>
+                        <a href="{% url 'detail' issue.id %}" class="btn btn-sm btn-primary">Details</a>
+                    </div>
+                  </div>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

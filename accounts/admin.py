@@ -4,17 +4,19 @@ from .models import CustomUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 class CustomUserAdmin(UserAdmin):
-    model = CustomUserAdminlist_display = [
+    model = CustomUser
+    list_display = [
         "username", "email", "last_name", "first_name",
         "role", "team", "is_staff"
     ]
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
     add_fieldsets = UserAdmin.add_fieldsets + (
-        ("None", {"fields": ("role", "team")}),
-    )
-    fieldsets = UserAdmin.fieldsets + (
-        ("None", {"fields": ("role", "team")}),
+        ("None", {"fields": ("role", "team")}),  # Coma al final
     )
 
+    fieldsets = UserAdmin.fieldsets + (
+        ("None", {"fields": ("role", "team")}),  # Coma al final
+    )
+    
 admin.site.register(CustomUser, CustomUserAdmin)

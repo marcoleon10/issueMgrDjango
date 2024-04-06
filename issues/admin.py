@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Issue
 
-# Register your models here.
+class PostAdmin(admin.ModelAdmin):
+    list_display = ["summary", "description", "status", "priority", "reporter", "assignee"]
+
+admin.site.register(Issue, PostAdmin)
